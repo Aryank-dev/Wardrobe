@@ -1,0 +1,2 @@
+import type { ClothingItem } from '@/types/clothing';
+export function isObviouslyBad(items:ClothingItem[]):boolean { const [top,bottom,shoes,outer]=items; if(!top||!bottom||!shoes) return true; if(top.category==='T-shirt'&&bottom.category==='Track pants'&&shoes.category==='Formal shoes') return true; if(shoes.category==='Crocs'&&items.some(i=>i.styles.includes('formal'))) return true; if(shoes.category==='Formal shoes'&&items.some(i=>i.styles.includes('sporty'))) return true; if(outer && outer.category!=='Jacket') return true; return false; }

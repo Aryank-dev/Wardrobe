@@ -1,0 +1,2 @@
+import type { ClothingItem, Occasion } from '@/types/clothing';
+export function occasionCompatibility(items:ClothingItem[], occasion?:Occasion):number { if(!occasion) return 80; const matches=items.filter(i=>i.occasions.includes(occasion)).length; let score=55+(matches/items.length)*45; if(occasion==='formal' && items.some(i=>i.category==='Crocs')) score=10; if(occasion==='formal' && items.some(i=>i.category==='Sports shoes')) score-=18; if(occasion==='sports' && items.some(i=>i.category==='Formal shoes')) score-=35; return Math.max(0,Math.min(100,Math.round(score))); }
